@@ -27,7 +27,7 @@
             <p><%= person.dateOfBirth.toLocaleDateString() %></p>
             <p><%= person.address %></p>
             <div class="d-flex justify-content-center m-2 gap-2">
-                <a href="/api/update"><div class="btn btn-primary btn-outline-secondary text-light">update</div></a>
+                <a href="/api/update/<%= person.id %>"><div class="btn btn-primary btn-outline-secondary text-light">update</div></a>
                 <a href="/api/delete"><div class="btn btn-danger btn-outline-warning">Delete</div></a>
             </div>
         <% }) %>

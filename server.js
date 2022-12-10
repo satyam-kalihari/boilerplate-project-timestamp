@@ -10,10 +10,11 @@ const app = express();
 
 mongoose.connect('mongodb://0.0.0.0/people_finder');
 
+app.use(methodOverride('_method'))//because form does not support put method
 app.use(express.urlencoded({extended : false}))
 app.set('view engine', 'ejs')
 app.use('/api', articleRouter)
-app.use(methodOverride('_method'))
+
 
 app.get('/', async(req, res) => {
 

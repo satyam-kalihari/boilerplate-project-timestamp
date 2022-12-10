@@ -10,8 +10,27 @@ router.get('/find', (req, res) => {
 res.status(200).render('../public/article/find.ejs')
 })
 
-router.get('/update', (req, res) => {
-res.status(200).render('../public/article/update.ejs')
+router.get('/update/:id', async(req, res) => {
+
+    const person = await PeopleFinder.findById(req.params.id);
+    res.status(200).render('../public/article/update.ejs', {person : person})
+})
+
+router.put('/:id', async(req, res) => {
+
+    req.person = await PeopleFinder.findById(req.params.id)
+    let person = req.person
+        person.name = req.body.name
+        person.dateOfBirth = req.body.dateOfBirth
+        person.address = req.body.address
+
+    try{
+        person = await person.save()
+        res.redirect('/')
+    }
+    catch(e){
+        res.end(e)
+    }
 })
 
 router.get('/delete', (req, res) => {
