@@ -6,9 +6,9 @@ router.get('/add', (req, res) => {
     res.status(200).render('../public/article/add.ejs')
 })
 
-router.get('/find', (req, res) => {
-res.status(200).render('../public/article/find.ejs')
-})
+// router.get('/find', (req, res) => {
+// res.status(200).render('../public/article/find.ejs')
+// })
 
 router.get('/update/:id', async(req, res) => {
 
@@ -33,8 +33,9 @@ router.put('/:id', async(req, res) => {
     }
 })
 
-router.get('/delete', (req, res) => {
-res.status(200).render('../public/article/delete.ejs')
+router.delete('/delete/:id', async(req, res) => {
+    await PeopleFinder.findByIdAndDelete(req.params.id)
+    res.redirect('/')
 })
 
 router.post('/add_data', (req, res) => {
