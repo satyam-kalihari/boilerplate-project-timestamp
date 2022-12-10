@@ -16,12 +16,21 @@
     <hr class="border border-danger border-2 opacity-50">
     <hr class="border border-primary border-4 opacity-75">
     <div class="d-flex justify-content-evenly m-4">
-        <a href="/api/add"><div class="btn btn-success p-xl-5">Add</div></a>
-        <a href="/api/find"><div class="btn btn-success p-xl-5">Find</div></a>
+        <a href="/api/add"><div class="btn btn-dark btn-outline-danger font-monospace fs-3 p-xl-5">Add</div></a>
+        <a href="/api/find"><div class="btn btn-dark btn-outline-danger font-monospace fs-3 p-xl-5">Find</div></a>
     </div>
-    <div class="d-flex justify-content-center m-4 gap-2">
-        <a href="/api/update"><div class="btn btn-dark p-xl-5">update</div></a>
-        <a href="/api/delete"><div class="btn btn-danger p-xl-5">Delete</div></a>
+    <div class="m-4 gap-3">
+        <% people.forEach(person => { %>
+            <hr class="border border-4 opacity-75">
+            <div class=""><%= person.id %></div>
+            <h1><%= person.name %></h1>
+            <p><%= person.dateOfBirth.toLocaleDateString() %></p>
+            <p><%= person.address %></p>
+            <div class="d-flex justify-content-center m-2 gap-2">
+                <a href="/api/update"><div class="btn btn-primary btn-outline-secondary text-light">update</div></a>
+                <a href="/api/delete"><div class="btn btn-danger btn-outline-warning">Delete</div></a>
+            </div>
+        <% }) %>
     </div>
 </body>
 </html>

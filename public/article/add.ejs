@@ -12,10 +12,7 @@
     <h1>let's add</h1>
     <div>
         <form action="/api/add_data" method="post" class="d-flex flex-column gap-2">
-            <input type="text" name="name" id="name" placeholder="name" class="border-0">
-            <input type="date" name="dateOfBirth" id="dateOfBirth">
-            <textarea name="address" id="address" placeholder="enter your address" ></textarea>
-            <button type="submit">submit</button>
+            <%- include('form_field') %>
         </form>
     </div>
 </body>
