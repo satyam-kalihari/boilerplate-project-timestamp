@@ -16,6 +16,13 @@ router.get('/update/:id', async(req, res) => {
     res.status(200).render('../public/article/update.ejs', {person : person})
 })
 
+router.get('/search', async(req, res) => {
+    const person = await PeopleFinder.find({"name" : req.body.name});
+    const con = JSON.stringify(person)
+    console.log(req.body.name)
+    res.status(200).json(person)
+})
+
 router.put('/:id', async(req, res) => {
 
     req.person = await PeopleFinder.findById(req.params.id)
@@ -39,7 +46,7 @@ router.delete('/delete/:id', async(req, res) => {
 })
 
 router.post('/add_data', (req, res) => {
-    console.log(req.name)
+    console.log(req.body.name)
     req.person = new PeopleFinder()
     let person = req.person
         person.name = req.body.name
